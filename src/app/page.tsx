@@ -1,5 +1,5 @@
+"use client";
 import { useState } from "react";
-
 export default function App() {
   try {
     const initDoms = [
@@ -15,7 +15,7 @@ export default function App() {
     const [removeNumber, setRemoveNumber] = useState("");
     const [newDomino, setNewDomino] = useState({ left: "", right: "" });
 
-    const countDoubleNumber = (dominoes) => {
+    const countDoubleNumber = () => {
       return [dominoes].filter(([a, b]) => a === b).length;
     };
 
@@ -38,7 +38,7 @@ export default function App() {
     };
 
     const deleteDuplicate = () => {
-      const count = {};
+      const count: Record<string, number> = {};
       dominoes.forEach(([a, b]) => {
         const key = [a, b].sort().join(",");
         count[key] = (count[key] || 0) + 1;
@@ -82,7 +82,7 @@ export default function App() {
         <div className="border p-2 mb-4">
           <strong>Double Numbers</strong>
           <br />
-          {countDoubleNumber(dominoes)}
+          {countDoubleNumber()}
         </div>
 
         <div className="flex flex-wrap gap-2 mb-4">
